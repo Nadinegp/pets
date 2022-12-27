@@ -20,6 +20,7 @@ require_once('Config.php');
         echo "Error connecting to MySQL: " . mysqli_connect_error();
         die;
       }
+      $email = $_SESSION['email'];
       $result = mysqli_query($connection, "SELECT * FROM animals WHERE type LIKE 'cat';");
       if (mysqli_num_rows($result) > 0) {
         while ($row = $result->fetch_assoc()) 
@@ -38,18 +39,20 @@ require_once('Config.php');
 
             </button>
             <div class="inner_button">
+            <?php if ($_SESSION['email']!= "") {?>
             <form method="POST" action="add_fav.php">
                 <input type="submit" value="Favorite">
                 <input type="hidden" name="animid" value="<?php echo $row["id"]; ?>">
-            </form>
+            </form><?php }?>
             <form method="POST" action="displayAnimal.php">
                 <input type="submit" value="View Animal">
                 <input type="hidden" name="animid" value="<?php echo $row["id"]; ?>">
             </form>
+            <?php if ($_SESSION['email']!= "") {?>
             <form method="POST" action="animalForm.php">
                 <input type="submit" value="Buy/Adopt">
                 <input type="hidden" name="animid" value="<?php echo $row["id"]; ?>">
-            </form>
+            </form><?php }?>
               <?php if ($_SESSION['fname'] == 'admin') {?>
                 <form method="POST" action="delete_pet.php">
                 <input type="submit" value="Delete">

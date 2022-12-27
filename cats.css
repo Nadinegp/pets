@@ -51,7 +51,7 @@ body{
     input[value="Delete"]:hover { background-color: red; color: white;}
     input[value="View Animal"]:hover { background-color: gray; color: black;}
     input[value="Buy/Adopt"]:hover { background-color: greenyellow;color: black;}
-    input[value="Favorite"]:hover { background-color: red;color: white;}
+    input[value="Favorite"]:hover { background-color: purple;color: white;}
     input{
     border-radius: 3px;
     border: 2px solid black;
